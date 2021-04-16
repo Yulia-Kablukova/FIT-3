@@ -1,5 +1,0 @@
-Hello, world!
-Hello, Jack
-2 1 3452
-abcc d
-1 2 3 4 5
