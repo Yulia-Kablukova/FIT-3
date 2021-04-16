@@ -1,4 +1,4 @@
-package com.company.tests;
+package tests;
 
 import com.company.blocks.*;
 import org.junit.Assert;
@@ -32,15 +32,17 @@ public class Tests {
     @Test
     public void writeTest() throws Exception {
 
-        ReadFile newRead = new ReadFile();
-        String[] readArgs = {"in.txt"};
         ArrayList<String> text = new ArrayList<>();
-        newRead.execute(readArgs, text);
+        text.add("Hello, world!");
+        text.add("Hello, Jack");
+        text.add("2 1 3452");
+        text.add("abcc d");
+        text.add("1 2 3 4 5");
 
         WriteFile newWrite = new WriteFile();
-        String[] writeArgs = {"writeTest.txt"};
+        String[] args = {"writeTest.txt"};
 
-        newWrite.execute(writeArgs, text);
+        newWrite.execute(args, text);
 
         Scanner scanner = new Scanner(new File("writeTest.txt"));
         ArrayList<String> writeResult = new ArrayList<>();
@@ -124,9 +126,14 @@ public class Tests {
 
         newDump.execute(args, text);
 
+        Scanner scanner = new Scanner(new File("dumpTest.txt"));
         ArrayList<String> dumpResult = new ArrayList<>();
-        ReadFile newRead = new ReadFile();
-        newRead.execute(args, dumpResult);
+        String str;
+
+        while (scanner.hasNext()) {
+            str = scanner.nextLine();
+            dumpResult.add(str);
+        }
 
         Assert.assertEquals(text, dumpResult);
     }

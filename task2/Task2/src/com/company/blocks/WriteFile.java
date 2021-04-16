@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class WriteFile implements Block {
 
+
     @Override
     public void execute(String[] args, ArrayList<String> text) throws Exception {
 
