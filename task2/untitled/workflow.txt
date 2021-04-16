@@ -1,9 +1,0 @@
-desc
-1 = readfile in.txt
-2 = writefile out.txt
-3 = grep 3
-4 = replace 2 3
-5 = sort
-6 = dump out2.txt
-csed
-1 -> 4 -> 6 -> 3 -> 5 -> 2
