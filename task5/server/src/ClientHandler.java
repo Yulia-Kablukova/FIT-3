@@ -8,12 +8,10 @@ public class ClientHandler implements Runnable {
     private Server server;
     private ObjectOutputStream outMessage;
     private ObjectInputStream inMessage;
-    private Socket clientSocket;
 
     public ClientHandler(Socket socket, Server server) {
         try {
             this.server = server;
-            this.clientSocket = socket;
             this.outMessage = new ObjectOutputStream(socket.getOutputStream());
             this.inMessage = new ObjectInputStream(socket.getInputStream());
         } catch (IOException ex) {
@@ -29,11 +27,6 @@ public class ClientHandler implements Runnable {
 
                 if (inMessage != null) {
                     Message clientMessage = (Message) inMessage.readObject();
-
-                    if (clientMessage.getText().equalsIgnoreCase("##session##end##")) {
-                        break;
-                    }
-
                     server.sendMessageToAllClients(clientMessage);
                 }
                 Thread.sleep(100);
